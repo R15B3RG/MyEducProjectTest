@@ -17,4 +17,9 @@ public class ExplodeOnImpact : MonoBehaviour
 
         transform.position += new Vector3(0, 0, 0);
     }
+
+    void Update()
+    {
+
+    }
 }
