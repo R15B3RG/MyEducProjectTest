@@ -7,7 +7,7 @@ using UnityEngine.UIElements;
 using Vector3 = UnityEngine.Vector3;
 
 
-public class NewBehaviourScript : MonoBehaviour
+public class ExplodeOnImpactScript : MonoBehaviour
 {
 
     [SerializeField] private GameObject _moveCube;
@@ -79,7 +79,7 @@ public class NewBehaviourScript : MonoBehaviour
 
     void OnCollisionEnter(Collision coll)
     {
-        if (coll.gameObject.tag != "Terrain")
+        if (!coll.gameObject.CompareTag("Terrain"))
         {
 
             Destroy(gameObject);
