@@ -5,14 +5,17 @@ using System.Threading;
 using UnityEngine;
 using Vector3 = UnityEngine.Vector3;
 using Quaternion = UnityEngine.Quaternion;
+using Vector2 = System.Numerics.Vector2;
 
 
 public class Obstacle : MonoBehaviour
 {
     [SerializeField] private GameObject _obstacle;
+
+    
     // Start is called before the first frame update
 
-    public float Speed = 5.0f;
+    public float Speed = 3f;
 
     public float RandPosX;
 
@@ -21,6 +24,8 @@ public class Obstacle : MonoBehaviour
     private Vector3 _newPosition;
 
     private Vector3 _initPosition;
+
+    private bool _isMoving = true;
 
     void Start()
     {
@@ -37,14 +42,25 @@ public class Obstacle : MonoBehaviour
     void Update()
     {
 
-        transform.position += new Vector3(_newPosition.x, 0, _newPosition.z) * Time.deltaTime * Speed;
-
-        if (Vector3.Distance(transform.position, _newPosition) <= 1)
+        while (true)
         {
-            
-        }
+            if (_isMoving)
+            {
+                transform.position = Vector3.MoveTowards(transform.position, _newPosition, Speed * Time.deltaTime);
 
-        transform.position = Vector3.MoveTowards(transform.position, _initPosition, Speed * Time.deltaTime);
+                if (Vector3.Distance(transform.position, _newPosition) <= 2)
+                {
+                    _isMoving = false;
+                }
+            }
+            else
+            {
+                transform.position = Vector3.MoveTowards(transform.position, _initPosition, Speed * Time.deltaTime);
+            }
+        }
+        //Vector3.Distance(transform.position, _newPosition) <= 2
+        //transform.position += new Vector3(_newPosition.x, 0, _newPosition.z) * Speed * Time.deltaTime;
+        //transform.position = Vector3.MoveTowards(transform.position, _initPosition, Speed * Time.deltaTime);
 
     }
 }
