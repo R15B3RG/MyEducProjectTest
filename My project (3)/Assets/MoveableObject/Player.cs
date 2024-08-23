@@ -2,15 +2,33 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Numerics;
 using System.Security.Cryptography;
+using System.Threading;
 using UnityEngine;
 using UnityEngine.UIElements;
+using Quaternion = UnityEngine.Quaternion;
 using Vector3 = UnityEngine.Vector3;
 
 
-public class ExplodeOnImpactScript : MonoBehaviour
+public class Player : MonoBehaviour
 {
 
-    [SerializeField] private GameObject _moveCube;
+    [SerializeField] private GameObject _player;
+
+    private short _health = 3;
+
+    private Vector3 _startPosition;
+
+    void Start()
+    {
+        _startPosition = transform.position;
+    }
+
+    void Spawning()
+    {
+        transform.position = _startPosition;
+
+        Instantiate(_player, _startPosition, Quaternion.identity);
+    }
 
 
     // Update is called once per frame
@@ -78,7 +96,14 @@ public class ExplodeOnImpactScript : MonoBehaviour
         if (!coll.gameObject.CompareTag("Terrain"))
         {
 
-            Destroy(gameObject);
+            _health -= 1;
+
+            if (_health == 0)
+            {
+                Destroy(_player);
+
+                Spawning();
+            }
 
         }
 
