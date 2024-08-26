@@ -14,7 +14,13 @@ public class Player : MonoBehaviour
 
     [SerializeField] private GameObject _player;
 
-    private short _health = 3;
+    [SerializeField] private float _health = 3;
+
+    public float Health
+    {
+        get => _health; 
+        set => _health = value;
+    }
 
     private Vector3 _startPosition;
 
@@ -29,6 +35,7 @@ public class Player : MonoBehaviour
 
         Instantiate(_player, _startPosition, Quaternion.identity);
     }
+
 
 
     // Update is called once per frame
@@ -96,9 +103,9 @@ public class Player : MonoBehaviour
         if (!coll.gameObject.CompareTag("Terrain"))
         {
 
-            _health -= 1;
+            Health -= 1;
 
-            if (_health == 0)
+            if (Health == 0)
             {
                 Destroy(_player);
 
