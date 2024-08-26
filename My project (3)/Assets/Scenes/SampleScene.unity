@@ -1829,7 +1829,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _followTarget: {fileID: 1884440542}
   _distance: 5
-  _minVerticalAngle: -20
+  _rotationSpeed: 2
+  _minVerticalAngle: -10
   _maxVerticalAngle: 45
   _framingOffset: {x: 0, y: 1}
 --- !u!1 &985416283
