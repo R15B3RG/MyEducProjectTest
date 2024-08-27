@@ -9,11 +9,6 @@ public class PlayerSpawnScript : MonoBehaviour
 
     [SerializeField] private Vector3 _spawnPosition;
 
-    void Start()
-    {
-        Awake();
-    }
-
     void Awake()
     {
         SceneManager.sceneLoaded += OnSceneLoaded;

@@ -9,12 +9,22 @@ public class MainMenu : MonoBehaviour
     {
         SceneManager.LoadSceneAsync(1, LoadSceneMode.Additive);
 
+        LoadNextScene();
+
+    }
+
+    public void LoadNextScene()
+    {
         this.gameObject.SetActive(false);
+
+        SceneManager.LoadScene(1);
     }
 
 
     public void QuitGame()
     {
+
+
         Application.Quit();
     }
 }

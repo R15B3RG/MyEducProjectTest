@@ -31,7 +31,7 @@ public class Player : MonoBehaviour
 
     void Spawning()
     {
-        transform.position = _startPosition;
+        //transform.position = _startPosition;
 
         Instantiate(_player, _startPosition, Quaternion.identity);
     }
