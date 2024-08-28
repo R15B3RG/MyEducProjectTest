@@ -1,55 +1,60 @@
 using System.Collections;
 using System.Collections.Generic;
 using Unity.IO.LowLevel.Unsafe;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class PauseMenu : MonoBehaviour
 {
-    [SerializeField] private GameObject _pauseMenu;
+    [SerializeField] private List<GameObject> _objectsToEnable;
+    [SerializeField] private GameObject _pauseMenuUi;
+    private bool _enableObjects = false;
+    private const string _mainMenuName = "MainMenu";
+    [SerializeField] private Button _resumeGame;
+    [SerializeField] private Button _mainMenu;
+    [SerializeField] private Button _quitGame;
 
-    public static bool GameIsPaused = false;
-
-    public GameObject PauseMenuUI;
-
-    void Update()
+    private void Awake()
     {
-        if (Input.GetKey(KeyCode.Escape))
+        _resumeGame.onClick.AddListener(OnResumeGame);
+        _mainMenu.onClick.AddListener(OnGoToMainMenu);
+        _quitGame.onClick.AddListener(OnQuitGame);
+    }
+
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Escape))
         {
-            if (GameIsPaused)
-            {
-                Resume();
-            }
-            else
-            {
-                Pause();
-            }
+            Cursor.lockState = CursorLockMode.None;
+            Cursor.visible = true;
+            _enableObjects = !_enableObjects;
+            _objectsToEnable.ForEach(go => go.SetActive(_enableObjects));
+            Time.timeScale = 0;
         }
     }
 
-    public void Resume()
+    private void OnResumeGame()
     {
-        PauseMenuUI.SetActive(false);
-        Time.timeScale = 1f;
-        GameIsPaused = false;
+        _enableObjects = !_enableObjects;
+        _objectsToEnable.ForEach(go => go.SetActive(_enableObjects));
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
+        Time.timeScale = 1;
     }
 
-    void Pause()
+    private void OnGoToMainMenu()
     {
-        PauseMenuUI.SetActive(true);
-        Time.timeScale = 0f;
-        GameIsPaused = true;
+        SceneManager.LoadScene(_mainMenuName);
     }
 
-    public void Quit()
+    private void OnQuitGame()
     {
+        if (EditorApplication.isPlaying)
+        {
+            EditorApplication.isPlaying = false;
+        }
         Application.Quit();
-
-        SceneManager.sceneLoaded += OnSceneLoaded;
-    }
-
-    private void OnSceneLoaded(Scene arg0, LoadSceneMode arg1)
-    {
-        SceneManager.LoadScene(0);
     }
 }
