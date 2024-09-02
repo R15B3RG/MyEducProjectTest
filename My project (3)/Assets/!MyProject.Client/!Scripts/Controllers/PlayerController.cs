@@ -9,24 +9,18 @@ using Quaternion = UnityEngine.Quaternion;
 using Vector3 = UnityEngine.Vector3;
 
 
-public class Player : MonoBehaviour
+public class PlayerController : MonoBehaviour
 {
 
     [SerializeField] private GameObject _player;
 
     [SerializeField] private Transform _cameraTransform;
 
-    [SerializeField] private float _health = 3;
-
     [SerializeField] private float _moveSpeed = 3;
 
     [SerializeField] private float _runSpeed = 7;
 
-    public float Health
-    {
-        get => _health; 
-        set => _health = value;
-    }
+   
 
     private Vector3 _startPosition;
 
@@ -107,21 +101,4 @@ public class Player : MonoBehaviour
         }
     }
 
-    void OnCollisionEnter(Collision coll)
-    {
-        if (!coll.gameObject.CompareTag("Terrain"))
-        {
-
-            Health -= 1;
-
-            if (Health == 0)
-            {
-                Destroy(_player);
-
-                Spawning();
-            }
-
-        }
-
-    }
 }
