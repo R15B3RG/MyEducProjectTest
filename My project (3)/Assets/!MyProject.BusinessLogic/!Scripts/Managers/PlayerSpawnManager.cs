@@ -3,11 +3,16 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class PlayerSpawnScript : MonoBehaviour
+public class PlayerSpawnManager : MonoBehaviour
 {
     [SerializeField] private GameObject _player;
 
     [SerializeField] private Vector3 _spawnPosition;
+
+    void Start()
+    {
+        _spawnPosition = transform.position;
+    }
 
     void Awake()
     {

@@ -1,0 +1,17 @@
+{
+    "name": "MyProject.BusinessLogic",
+    "rootNamespace": "",
+    "references": [
+        "Unity.InputSystem",
+        "MyProject.Shared"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

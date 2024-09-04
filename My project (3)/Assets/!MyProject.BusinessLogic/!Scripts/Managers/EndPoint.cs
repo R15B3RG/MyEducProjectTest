@@ -17,9 +17,16 @@ public class EndPoint : MonoBehaviour
 
     [SerializeField] private Button _nextLevel;
 
+    [SerializeField] private Vector3 _spawnPosition;
+
     private const string _nextLevelName = "Level2";
 
     private bool _enableObjects = false;
+
+    private void Start()
+    {
+        _spawnPosition = transform.position;
+    }
 
     private void Awake()
     {

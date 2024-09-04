@@ -1,0 +1,16 @@
+{
+    "name": "MyProject.Client",
+    "rootNamespace": "",
+    "references": [
+        "GUID:7894e86bdde85ab49b6e04567e549426"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

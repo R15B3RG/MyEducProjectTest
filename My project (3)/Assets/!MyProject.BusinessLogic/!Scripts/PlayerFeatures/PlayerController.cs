@@ -1,7 +1,5 @@
 using System.Collections;
 using System.Collections.Generic;
-using System.Numerics;
-using System.Security.Cryptography;
 using System.Threading;
 using UnityEngine;
 using UnityEngine.UIElements;
@@ -9,10 +7,11 @@ using Quaternion = UnityEngine.Quaternion;
 using Vector3 = UnityEngine.Vector3;
 
 
+
 public class PlayerController : MonoBehaviour
 {
 
-    [SerializeField] private GameObject _player;
+    [SerializeField] private Player _player = new();
 
     [SerializeField] private Transform _cameraTransform;
 
@@ -20,28 +19,12 @@ public class PlayerController : MonoBehaviour
 
     [SerializeField] private float _runSpeed = 7;
 
-   
-
-    private Vector3 _startPosition;
-
-    void Start()
-    {
-        _startPosition = transform.position;
-    }
-
-    void Spawning()
-    {
-        //transform.position = _startPosition;
-
-        Instantiate(_player, _startPosition, Quaternion.identity);
-    }
 
 
 
     // Update is called once per frame
     void Update()
-    {
-        //transform.position += new Vector3(0, 0, 3) * Time.deltaTime;
+    { 
 
         Movement();
 

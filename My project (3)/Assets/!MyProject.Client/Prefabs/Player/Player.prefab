@@ -173,6 +173,7 @@ GameObject:
   - component: {fileID: 4831237819841069036}
   - component: {fileID: 3939482995591876904}
   - component: {fileID: 2407618101493949759}
+  - component: {fileID: -7568956839729478259}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -308,9 +309,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d2b712cefd7b87d4b9f5dd046f4d5856, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _player: {fileID: 2627297717854734810}
+  _player:
+    _health: 3
   _cameraTransform: {fileID: 8530842339229174024, guid: 9bb7ce7a33721534d99b679c6ea7ea4f, type: 3}
-  _health: 3
   _moveSpeed: 3
   _runSpeed: 7
 --- !u!114 &2407618101493949759
@@ -327,6 +328,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _player: {fileID: 2627297717854734810}
   _spawnPosition: {x: 0, y: 0, z: 0}
+--- !u!114 &-7568956839729478259
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2627297717854734810}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1788f27b8e138ae46acd2c45481f9b95, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2689947897551664709
 GameObject:
   m_ObjectHideFlags: 0

@@ -1,7 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
-using Unity.IO.LowLevel.Unsafe;
+#if UNITY_EDITOR
 using UnityEditor;
+#endif
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -15,6 +16,8 @@ public class PauseMenu : MonoBehaviour
     [SerializeField] private Button _resumeGame;
     [SerializeField] private Button _mainMenu;
     [SerializeField] private Button _quitGame;
+
+    
 
     private void Awake()
     {
@@ -51,10 +54,13 @@ public class PauseMenu : MonoBehaviour
 
     private void OnQuitGame()
     {
+#if UNITY_EDITOR
         if (EditorApplication.isPlaying)
         {
             EditorApplication.isPlaying = false;
         }
+#endif
         Application.Quit();
     }
+
 }
