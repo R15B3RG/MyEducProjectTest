@@ -9,33 +9,18 @@ public class PlayerSpawnManager : MonoBehaviour
 
     [SerializeField] private Vector3 _spawnPosition;
 
-    void Start()
-    {
-        _spawnPosition = transform.position;
-    }
-
     void Awake()
     {
-        SceneManager.sceneLoaded += OnSceneLoaded;
-    }
 
-    private void OnSceneLoaded(Scene arg0, LoadSceneMode arg1)
-    {
         SpawnPlayer();
     }
 
-    void OnDestroy()
-    {
-        SceneManager.sceneLoaded -= OnSceneLoaded;
-    }
+    
 
     void SpawnPlayer()
     {
-        _spawnPosition = transform.position;
-
-        if (GameObject.FindGameObjectWithTag("Player") == null)
-        {
-            Instantiate(_player, _spawnPosition, Quaternion.identity);
-        }
+       
+       Instantiate(_player, _spawnPosition, Quaternion.identity);
+        
     }
 }

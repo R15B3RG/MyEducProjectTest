@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using Time = UnityEngine.Time;
 
-public class EndPoint : MonoBehaviour
+public class EndPointManager : MonoBehaviour
 {
     [SerializeField] private List<GameObject> _objectsToEnable;
 

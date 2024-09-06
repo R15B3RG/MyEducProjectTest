@@ -22,6 +22,5 @@ public class Player : IPlayer
         get => _health;
         set => _health = value;
     }
-   
 
 }

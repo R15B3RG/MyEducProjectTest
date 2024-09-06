@@ -15,7 +15,7 @@ public class MainMenu : MonoBehaviour
 
     public void LoadNextScene()
     {
-        this.gameObject.SetActive(false);
+        gameObject.SetActive(false);
 
         SceneManager.LoadScene(1);
     }

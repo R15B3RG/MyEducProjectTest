@@ -9,7 +9,7 @@ using Quaternion = UnityEngine.Quaternion;
 using Vector2 = System.Numerics.Vector2;
 
 
-public class Obstacle : MonoBehaviour
+public class ObstacleCubeMovmentManager : MonoBehaviour
 {
     [SerializeField] private GameObject _obstacle;
 

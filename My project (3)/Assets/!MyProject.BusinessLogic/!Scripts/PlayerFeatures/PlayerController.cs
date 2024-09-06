@@ -1,87 +1,52 @@
 using System.Collections;
 using System.Collections.Generic;
-using System.Threading;
 using UnityEngine;
-using UnityEngine.UIElements;
-using Quaternion = UnityEngine.Quaternion;
-using Vector3 = UnityEngine.Vector3;
 
 
 
 public class PlayerController : MonoBehaviour
 {
 
+
     [SerializeField] private Player _player = new();
 
-    [SerializeField] private Transform _cameraTransform;
+    public Player PlayerStats => _player;
 
-    [SerializeField] private float _moveSpeed = 3;
+    [SerializeField] private PlayerMoveService _moveService;
 
-    [SerializeField] private float _runSpeed = 7;
+    private CharacterController _characterController;
 
+    private void Awake()
+    {
 
+        _characterController = GetComponent<CharacterController>();
 
-
-    // Update is called once per frame
-    void Update()
-    { 
-
-        Movement();
-
-        if (Input.GetKey(KeyCode.Space))
-            transform.position += new Vector3(0, 7, 0) * Time.deltaTime;
+        _moveService = new PlayerMoveService(_player, _characterController);
         
     }
 
-    
-
-    private void Movement()
+    private void OnEnable()
     {
-        Vector3 forward = _cameraTransform.forward;
+        PlayerMoveDataHandleManager.OnPlayerMove += _moveService.OnMove;
+        PlayerMoveDataHandleManager.OnPlayerRun += _moveService.OnRun;
 
-        Vector3 right = _cameraTransform.right;
+        
 
-        forward.y = 0;
-        right.y = 0;
+        PlayerMoveDataHandleManager.OnPlayerJump += _moveService.OnJump;
 
-        forward.Normalize();
-        right.Normalize();
+        
+    }
+    private void OnDisable()
+    {
+        PlayerMoveDataHandleManager.OnPlayerMove -= _moveService.OnMove;
+        PlayerMoveDataHandleManager.OnPlayerRun -= _moveService.OnRun;
+        PlayerMoveDataHandleManager.OnPlayerJump -= _moveService.OnJump;
 
-        Vector3 moveDirection = Vector3.zero;
-
-        if (Input.GetKey(KeyCode.W))
-        {
-            moveDirection += forward;
-        }
-
-        if (Input.GetKey(KeyCode.S))
-        {
-            moveDirection -= forward;
-        }
-
-        if (Input.GetKey(KeyCode.A))
-        {
-            moveDirection -= right;
-        }
-
-        if (Input.GetKey(KeyCode.D))
-        {
-            moveDirection += right;
-        }
-
-        if (Input.GetKey(KeyCode.LeftShift))
-        {
-            transform.position += moveDirection * _runSpeed * Time.deltaTime;
-        }
-        else
-        {
-            transform.position += moveDirection * _moveSpeed * Time.deltaTime;
-        }
-
-        if (moveDirection != Vector3.zero)
-        {
-            transform.rotation = Quaternion.LookRotation(moveDirection);
-        }
     }
 
+    private void Update()
+    {
+        _moveService.PlayerMovement();
+        
+    }
 }
