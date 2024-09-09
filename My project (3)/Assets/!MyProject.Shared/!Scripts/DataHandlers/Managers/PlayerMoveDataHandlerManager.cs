@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 
-public static class PlayerMoveDataHandleManager
+public static class PlayerMoveDataHandlerManager
 {
     public static event Action<Vector2> OnPlayerMove;
     public static void PlayerMove(Vector2 dir) => OnPlayerMove.Invoke(dir); //Direction of movment

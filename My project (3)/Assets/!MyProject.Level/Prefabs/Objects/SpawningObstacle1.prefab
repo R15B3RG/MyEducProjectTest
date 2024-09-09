@@ -14,9 +14,10 @@ GameObject:
   - component: {fileID: 8744094765761912623}
   - component: {fileID: 7094916455867470763}
   - component: {fileID: 2628190363152971954}
+  - component: {fileID: -868408429952964422}
   m_Layer: 0
   m_Name: SpawningObstacle1
-  m_TagString: Untagged
+  m_TagString: Obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -105,7 +106,7 @@ CapsuleCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.5000001
+  m_Radius: 0.502
   m_Height: 2
   m_Direction: 1
   m_Center: {x: 0.000000059604645, y: 0, z: -0.00000008940697}
@@ -151,3 +152,15 @@ MonoBehaviour:
   SpawningObstacle: {fileID: 6174430898085463189}
   MinVal: -10
   MaxVal: 10
+--- !u!114 &-868408429952964422
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6174430898085463189}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1788f27b8e138ae46acd2c45481f9b95, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

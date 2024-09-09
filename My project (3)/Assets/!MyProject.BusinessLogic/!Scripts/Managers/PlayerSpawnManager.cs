@@ -23,4 +23,6 @@ public class PlayerSpawnManager : MonoBehaviour
        Instantiate(_player, _spawnPosition, Quaternion.identity);
         
     }
+
+    
 }
